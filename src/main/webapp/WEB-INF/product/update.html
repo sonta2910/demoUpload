@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Product</title>
+</head>
+<body>
+<h1>Form Update</h1>
+<button>
+    <a th:href="@{/products/}">Back to list</a></button>
+<form action="/products/update" method="post" th:object="${product}" novalidate="novalidate" enctype="multipart/form-data">
+    <input type="text" th:value="${product.getId()}" th:field="*{id}" hidden>
+    <label>Name </label>
+    <input type="text" th:field="*{name}" th:value="${product.getName()}">
+    <label>Description <input type="text" th:value="${product.getDescription()}" th:field="*{description}"></label>
+    <label>Image <input type="file" th:field="*{image}" th:src="@{'/image/' + *{image}}"></label>
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>
